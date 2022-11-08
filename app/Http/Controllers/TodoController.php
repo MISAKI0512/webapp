@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Models\tag;
 use App\Http\Requests\TodoRequest;
 
 class TodoController extends Controller
@@ -32,4 +33,11 @@ class TodoController extends Controller
         Todo::find($request->id)->delete();
         return redirect('/');
     }
+    //以下、タグ用
+        public function index_tag(Request $request)
+    {
+        $tags = Tag::all();
+        return view('index', ['tags'=>$tags]);
+    }
+
 }

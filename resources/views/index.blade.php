@@ -15,7 +15,18 @@
   <body>
     <div class="container">
       <div class="card">
-        <p class="title mb-15"> Todo List</p>
+        <div class="todo_header">
+          <p class="title mb-15">Todo List</p>
+          @auth
+          <div class="login">
+            <div class="login_user">{{"「". $user ."」でログイン中"}}</div>
+            <form action="{{ route('logout')}}" method="post">
+              @csrf
+              <input class="button-logout" type="submit" value="ログアウト"></form>
+          </div>
+          @endauth
+        </div>
+        <input class="button-task" type="submit" value="タスク検索">
         @if (count($errors)>0)
         <ul>
           @foreach ($errors->all() as $error)
@@ -27,12 +38,18 @@
           <form action="/todo/create" method="post" class="flex between mb-30">
             @csrf
             <input type="text" class="input-add" name="content" >
+            <select name="tag_id" class="select-tag">
+              @foreach($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->title}}</option>
+              @endforeach
+            </select>
             <input class="button-add" type="submit" value="追加">
           </form>
           <table>
             <tr>
             <th>作成日</th>
             <th>タスク名</th>
+            <th>タグ</th>
             <th>更新</th>
             <th>削除</th>
           </tr>
@@ -45,6 +62,15 @@
               @csrf
               <td>
                 <input type="text" class="input-update" value="{{ $todo->content }}" name="content">
+              </td>
+              <td>
+              <select name="tag_id" class="select-tag">
+                <option value="1">家事</option>
+                <option value="2">勉強</option>
+                <option value="3">運動</option>
+                <option value="4">食事</option>
+                <option value="5">移動</option>
+            </select>
               </td>
               <td>
                 <button class="button-update">更新</button>
@@ -65,4 +91,4 @@
   </div>
 </body>
 
-</html>
+</html

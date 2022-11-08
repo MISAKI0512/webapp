@@ -212,6 +212,14 @@ select {
   font-size: 14px;
   outline: none;
 }
+.select-tag{
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  margin:0px 10px;
+}
 
 table {
   text-align: center;
@@ -285,10 +293,62 @@ tr {
   transition: 0.4s;
   outline: none;
 }
+.button-logout{
+  text-align: left;
+    border: 2px solid #FF0000;
+    font-size: 12px;
+    color: #FF0000;
+    background-color: #fff;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+    outline: none;
+}
+
 
 .button-delete:hover {
   background-color: #71fadc;
   border-color: #71fadc;
   color: #fff;
 }
+.button-logout:hover {
+  background-color: #FF0000;
+  border-color: #FF0000;
+  color: #fff;
+}
 
+.button-task{
+  text-align: left;
+  border: 2px solid #CBEF19;
+  font-size: 12px;
+  color: #CBEF19;
+  background-color: #fff;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  outline: none;
+  margin-bottom: 10px;
+}
+.button-task:hover {
+  background-color: #CBEF19;
+  border-color: #CBEF19;
+  color: #fff;
+}
+
+.todo_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.login{
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.login_user{
+  margin-right: 10px;
+}

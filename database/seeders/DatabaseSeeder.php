@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    \App\Models\Todo::factory(3)->create();
+    $this->call(TagsTableSeeder::class);
     }
 }

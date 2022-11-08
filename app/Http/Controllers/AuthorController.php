@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Todo;
 
 class AuthorController extends Controller
 {
     public function index()
     {
-        $user =Auth::user();
-        $authors = Author::paginate(4);
-        $param = ['authors' => $authors, 'user' =>$user];
+        $user =Auth::user()->name;
+        $todos = Todo::paginate(4);
+        $param = ['todos'=>$todos ,'user' =>$user];
         return view('index',$param);
     }
 
