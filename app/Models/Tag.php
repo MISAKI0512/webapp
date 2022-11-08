@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+    use HasFactory;
+    
     protected $guarded = array('id');
-
-    public function getTitle()
-    {return $this;
-    }
-    public function author()
-    {return $this->belongsTo('App\Models\Todo');
 }
