@@ -8,7 +8,7 @@ use App\Http\Middleware\FirstMiddleware;
 
 
 Route::get('/', [TodoController::class, 'index'])->name('todo.index');
-Route::get('/',[TodoController::class,'index_tag'])->name('tag.index');
+//Route::get('/',[TodoController::class,'index_tag'])->name('tag.index');
 Route::get('/',[AuthorController::class,'index'])->middleware('auth');
 Route::get('/auth',[AuthorController::class,'check']);
 Route::post('/auth',[AuthorController::class,'checkUser']);
