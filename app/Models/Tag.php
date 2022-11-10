@@ -10,4 +10,9 @@ class Tag extends Model
     use HasFactory;
     
     protected $guarded = array('id');
+
+    public function todo()
+    {
+        return $this->belongsTo('App\Models\Todo');
+    }
 }

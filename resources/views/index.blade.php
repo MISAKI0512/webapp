@@ -67,7 +67,7 @@
               </td>
               <td>
               <select name="tag_id" class="select-tag">
-                @foreach($tags as $tag)
+                @foreach($todos as $tag)
                   @if ($tag->tag_id === $todo->tag_id)
                     <option value="{{ $tag->id }}" selected="selected">{{ $tag->title }}</option>
                   @else
