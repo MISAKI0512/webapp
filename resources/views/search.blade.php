@@ -16,7 +16,7 @@
     <div class="container">
       <div class="card">
         <div class="todo_header">
-          <p class="title mb-15">Todo List</p>
+          <p class="title mb-15">タスク検索</p>
           @auth
           <div class="login">
             <div class="login_user">{{"「". $user ."」でログイン中"}}</div>
@@ -26,10 +26,6 @@
           </div>
           @endauth
         </div>
-        <form action="/index_search" method="post">
-          @csrf
-          <input class="button-task" type="submit" value="タスク検索">
-        </form>
           @if (count($errors)>0)
         <ul>
           @foreach ($errors->all() as $error)
@@ -92,6 +88,10 @@
           </tr>
           @endforeach
         </table>
+        <form action="{{ route('todo.index',['id' => $todo -> id])}}" method="post">
+          @csrf
+          <input class="button-back" type="submit" value="戻る">
+        </form>
       </div>
     </div>
   </div>

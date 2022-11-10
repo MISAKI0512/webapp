@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Todo;
+use App\Models\Tag;
 
 class AuthorController extends Controller
 {
@@ -12,7 +13,8 @@ class AuthorController extends Controller
     {
         $user =Auth::user()->name;
         $todos = Todo::paginate(4);
-        $param = ['todos'=>$todos ,'user' =>$user];
+        $tags = Tag::all();
+        $param = ['todos'=>$todos ,'user' =>$user,'tags'=>$tags];
         return view('index',$param);
     }
 
@@ -34,4 +36,12 @@ class AuthorController extends Controller
     }
     return view('auth.login', ['text' => $text]);
 }
+    public function index_search()
+    {
+        $user =Auth::user()->name;
+        $todos = Todo::paginate(4);
+        $tags = Tag::all();
+        $param = ['todos'=>$todos ,'user' =>$user,'tags'=>$tags];
+        return view('search',$param);
+    }
 }

@@ -11,10 +11,9 @@ class TodoController extends Controller
 {
     public function index()
     {
-        //$todos = Todo::all();
-        //$tags = Tag::all();
-        //dd($tags);
-        //return view('index',['todos' => $todos],['tags'=>$tags]);
+        $todos = Todo::all();
+        $tags = Tag::all();
+        return view('index',['todos' => $todos],['tags'=>$tags]);
     }
     public function create(TodoRequest $request)
     {
@@ -35,5 +34,6 @@ class TodoController extends Controller
         Todo::find($request->id)->delete();
         return redirect('/');
     }
+    
 
 }
