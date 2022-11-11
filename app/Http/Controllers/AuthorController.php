@@ -39,9 +39,15 @@ class AuthorController extends Controller
     public function index_search()
     {
         $user =Auth::user()->name;
-        $todos = Todo::paginate(4);
-        $tags = Tag::all();
-        $param = ['todos'=>$todos ,'user' =>$user,'tags'=>$tags];
-        return view('search',$param);
+        return view('search',['user'=> $user]);
     }
+
+    public function search(Request $request) 
+    {
+    $search = Todo::where('content','LIKE BINARY',"%{$request->input}%")->get();
+    //dd($search);
+    $user =Auth::user()->name;
+    return view('search',['search'=>$search,'user'=>$user]);
+}
+
 }

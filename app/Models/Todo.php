@@ -10,4 +10,5 @@ class Todo extends Model
     use HasFactory;
 
     protected $guarded = array('id');
+
 }

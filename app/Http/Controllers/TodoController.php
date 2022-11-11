@@ -35,5 +35,10 @@ class TodoController extends Controller
         return redirect('/');
     }
     
+    public function search(Request $request) 
+    {
+    dd($request);
+    $item = Todo::whereTodo('$request->')->get();
+    }
 
 }

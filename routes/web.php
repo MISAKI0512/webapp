@@ -7,7 +7,7 @@ use App\Http\Middleware\FirstMiddleware;
 
 
 
-//Route::get('/', [TodoController::class, 'index'])->name('todo.index');
+Route::get('/', [TodoController::class, 'index'])->name('todo.index');
 Route::get('/',[AuthorController::class,'index'])->middleware('auth');
 Route::get('/auth',[AuthorController::class,'check']);
 Route::post('/auth',[AuthorController::class,'checkUser']);
@@ -17,6 +17,7 @@ Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.updat
 Route::post('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');
 
 Route::post('/index_search',[AuthorController::class,'index_search'])->name('index.search');
+Route::post('/search',[AuthorController::class,'search'])->name('search');
 
 //Route::get('/middleware',[AuthorController::class,'get']);
 //Route::post('/middleware',[AuthorController::class,'post'])->middleware(FirstMiddleware::class);

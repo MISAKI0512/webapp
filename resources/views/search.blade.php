@@ -34,9 +34,9 @@
         </ul>
         @endif
         <div class="todo">
-          <form action="/todo/create" method="post" class="flex between mb-30">
+          <form method="post" action="/search" class="flex between mb-30" >
             @csrf
-            <input type="text" class="input-add" name="content" >
+            <input type="text" class="input-add" name="input" >
             <select name="tag_id" class="select-tag">
                 <option value="1">家事</option>
                 <option value="2">勉強</option>
@@ -44,7 +44,7 @@
                 <option value="4">食事</option>
                 <option value="5">移動</option>
             </select>
-            <input class="button-add" type="submit" value="追加">
+            <input class="button-add" type="submit" value="検索">
           </form>
           <table>
             <tr>
@@ -54,7 +54,8 @@
             <th>更新</th>
             <th>削除</th>
           </tr>
-          @foreach($todos as $todo)
+            @if (isset($search)>0)
+            @foreach($search as $todo)
           <tr>
             <td>
               {{ $todo->created_at }}
@@ -66,7 +67,7 @@
               </td>
               <td>
               <select name="tag_id" class="select-tag">
-                @foreach($tags as $tag)
+                @foreach($search as $tag)
                   @if ($tag->tag_id === $todo->tag_id)
                     <option value="{{ $tag->id }}" selected="selected">{{ $tag->title }}</option>
                   @else
@@ -87,11 +88,11 @@
             </td>
           </tr>
           @endforeach
+          @endif
         </table>
-        <form action="{{ route('todo.index',['id' => $todo -> id])}}" method="post">
-          @csrf
+        <a href="/">
           <input class="button-back" type="submit" value="戻る">
-        </form>
+        </a>
       </div>
     </div>
   </div>
