@@ -15,7 +15,6 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->integer('tag_id');
             $table->string('title');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
@@ -32,3 +31,4 @@ class CreateTagsTable extends Migration
         Schema::dropIfExists('tags');
     }
 }
+
