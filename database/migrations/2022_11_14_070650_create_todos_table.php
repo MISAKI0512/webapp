@@ -1,4 +1,4 @@
-<?php
+\<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +18,7 @@ class CreateTodosTable extends Migration
             $table->string('content');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
-            $table->foreignId('tag_id')->constrained();
+            $table->foreignId('tag_id')->constrained('tags');
         });
     }
 
