@@ -38,6 +38,7 @@
             @csrf
             <input type="text" class="input-add" name="input" >
             <select name="tag_id" class="select-tag">
+                <option selected></option>
                 <option value="1">家事</option>
                 <option value="2">勉強</option>
                 <option value="3">運動</option>
@@ -67,8 +68,8 @@
               </td>
               <td>
               <select name="tag_id" class="select-tag">
-                @foreach($search as $tag)
-                  @if ($tag->tag_id === $todo->tag_id)
+                @foreach($tags as $tag)
+                  @if ($tag->id === $todo->tag_id)
                     <option value="{{ $tag->id }}" selected="selected">{{ $tag->title }}</option>
                   @else
                     <option value="{{ $tag->id }}">{{ $tag->title }}</option>

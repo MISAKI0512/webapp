@@ -12,7 +12,7 @@ class AuthorController extends Controller
     public function index()
     {
         $user =Auth::user()->name;
-        $todos = Todo::paginate(4);
+        $todos = Todo::all();
         $tags = Tag::all();
         $param = ['todos'=>$todos ,'user' =>$user,'tags'=>$tags];
         return view('index',$param);
@@ -44,10 +44,11 @@ class AuthorController extends Controller
 
     public function search(Request $request) 
     {
-    $search = Todo::where('content','LIKE BINARY',"%{$request->input}%")->get();
-    //dd($search);
+    $search = Todo::where('content','LIKE',"%{$request->input}%")->get();
     $user =Auth::user()->name;
-    return view('search',['search'=>$search,'user'=>$user]);
+    $tags = Tag::all();
+    $tag_search = Todo::where('tag_id',$request->tag_id)->get();
+        return view('search',['search'=>$search,'user'=>$user, 'tags'=>$tags,'tag_search'=>$tag_search]);
 }
 
 }
