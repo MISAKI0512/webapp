@@ -44,11 +44,17 @@ class AuthorController extends Controller
 
     public function search(Request $request) 
     {
-    $search = Todo::where('content','LIKE',"%{$request->input}%")->get();
+    $search = Todo::where('content','LIKE',"%{$request->input}%")->get()->all();
+    dd($search);
+    $tag_search = Todo::where('tag_id',$request->tag_id)->get()->all();
+    //dd($tag_search);
+    $result = array_merge($search, $tag_search, array());
+    //dd($result);
     $user =Auth::user()->name;
     $tags = Tag::all();
-    $tag_search = Todo::where('tag_id',$request->tag_id)->get();
-        return view('search',['search'=>$search,'user'=>$user, 'tags'=>$tags,'tag_search'=>$tag_search]);
+
+        return view('search',['search'=>$search,'user'=>$user, 'tags'=>$tags,'tag_search'=>$tag_search,'result'=>$result]);
+
 }
 
 }
