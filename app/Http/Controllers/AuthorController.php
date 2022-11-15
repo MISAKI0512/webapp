@@ -44,16 +44,27 @@ class AuthorController extends Controller
 
     public function search(Request $request) 
     {
-    $search = Todo::where('content','LIKE',"%{$request->input}%")->get()->all();
-    dd($search);
-    $tag_search = Todo::where('tag_id',$request->tag_id)->get()->all();
-    //dd($tag_search);
-    $result = array_merge($search, $tag_search, array());
-    //dd($result);
-    $user =Auth::user()->name;
-    $tags = Tag::all();
+        $query = Todo::query();
+        $i_todo = $request->input;
+        $i_tag = $request -> tag_id;
+        if(!empty($i_todo)) {
+            $query->where('content', 'like', "%{$i_todo}%");
+        }
+        if(!empty($i_tag)) {
+            $query->where('content', '=', "$i_tag");
+        }
+        //dd($query); 
+        $data=$query->get();
+        dd($data);
+        //$search = Todo::where('content','LIKE',"%{$request->input}%")->get()->all();
+        //$tag_search = Todo::where('tag_id',$request->tag_id)->get()->all();
+        //dd($tag_search);
+        //$result = array_merge($search, $tag_search, array());
+        //dd($result);
+        $user =Auth::user()->name;
+        $tags = Tag::all();
 
-        return view('search',['search'=>$search,'user'=>$user, 'tags'=>$tags,'tag_search'=>$tag_search,'result'=>$result]);
+        return view('search',compact('user', 'tags','data'));
 
 }
 
