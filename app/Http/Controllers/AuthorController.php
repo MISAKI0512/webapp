@@ -51,16 +51,10 @@ class AuthorController extends Controller
             $query->where('content', 'like', "%{$i_todo}%");
         }
         if(!empty($i_tag)) {
-            $query->where('content', '=', "$i_tag");
-        }
-        //dd($query); 
-        $data=$query->get();
-        dd($data);
-        //$search = Todo::where('content','LIKE',"%{$request->input}%")->get()->all();
-        //$tag_search = Todo::where('tag_id',$request->tag_id)->get()->all();
-        //dd($tag_search);
-        //$result = array_merge($search, $tag_search, array());
-        //dd($result);
+            $query->where('tag_id', '=', "$i_tag");
+        } 
+        $data=$query->get()->all();
+        //dd($data);
         $user =Auth::user()->name;
         $tags = Tag::all();
 

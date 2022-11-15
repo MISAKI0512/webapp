@@ -55,8 +55,8 @@
             <th>更新</th>
             <th>削除</th>
           </tr>
-            @if (isset($result)>0)
-            @foreach($result as $todo)
+            @if (isset($data)>0)
+            @foreach($data as $todo)
           <tr>
             <td>
               {{ $todo->created_at }}
